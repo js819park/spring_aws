@@ -6,3 +6,4 @@
 /out/test/classes/
 .gradle
 .idea
+.application-ouath.properties
