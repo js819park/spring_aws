@@ -20,8 +20,8 @@ public class PostsApiController {
     }
 
     @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestsDto requestsDto){
-        return postsService.update(id,requestsDto);
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestsDto requestDto){
+        return postsService.update(id,requestDto);
     }
 
     @GetMapping("/api/v1/posts/{id}")
