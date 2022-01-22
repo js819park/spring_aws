@@ -6,4 +6,4 @@
 /out/test/classes/
 .gradle
 .idea
-application-ouath.properties
+application-ouath.properties.DS_Store
