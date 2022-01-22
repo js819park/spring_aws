@@ -6,5 +6,5 @@
 /out/test/classes/
 .gradle
 .idea
-application-ouath.properties
 .DS_Store
+application-oauth.properties
