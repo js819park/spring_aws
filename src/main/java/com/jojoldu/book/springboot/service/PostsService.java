@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class PostsService {//service메소드는 트랜잭션과 도메인 간의 순서만 보장해준다.
+public class PostsService {//service메소드는 트랜잭션과 도메인 간의 순서만 보장해준다. Dto, Dao 사이에서 순서만 보장해준다는 말
 
     private final PostsRepository postsRepository;
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
-        return postsRepository.save(requestDto.toEntity()).getId();
+    public Long save(PostsSaveRequestDto requestDto){//넘어온 Dto를
+        return postsRepository.save(requestDto.toEntity()).getId();//엔티티로 바꿔서 레포지토리에 저장해됨
     }
 
     @Transactional
@@ -31,7 +31,6 @@ public class PostsService {//service메소드는 트랜잭션과 도메인 간�
 
         return id;
     }
-
 
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id)

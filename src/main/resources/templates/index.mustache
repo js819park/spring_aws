@@ -27,10 +27,10 @@
         </tr>
         </thead>
         <tbody id="tbody">
-        {{#posts}}
+        {{#posts}}<!--posts라는 List를 순회한다, For문-->
             <tr>
                 <td>{{id}}</td>
-                <td><a href="/posts/update/{{id}}">{{title}}</a></td>
+                <td><a href="/posts/update/{{id}}">{{title}}</a></td><!--List에서 뽑아낸 객체의 필드를 사용-->
                 <td>{{author}}</td>
                 <td>{{modifiedDate}}</td>
             </tr>

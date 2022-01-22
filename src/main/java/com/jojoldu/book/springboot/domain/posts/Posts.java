@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Posts extends BaseTimeEntity {//실제 DB테이블과 매칭될 클래스(Entity 클래스)-> DB데이터에 작업할 경우 직접 쿼리 수정 대신 Entity클래스 수정을 통해 작업
     @Id//Primary Key를 나타냄
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;//PK는 Long타입의 Auto_increment를 추천, 유니크키나, 복합키로 잡지 말자
+    private Long id;//PK는 Long타입의 Auto_increment를 추천, 유니크키나, 복합키로 잡지 말자,
 
     @Column(length = 500, nullable = false)//테이블의 칼럼을 나타내며, 선언안해도 클래스의 필드는 모두 칼럼이 됨, 옵션 있을때 어노테이션 선언
     private String title;
