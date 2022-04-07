@@ -19,15 +19,14 @@ import java.util.Collections;
 
 @RequiredArgsConstructor
 @Service
-public class CustomOauth2UserServie implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException{
-        OAuth2UserService<OAuth2UserRequest, OAuth2User>
-                delegate = new DefaultOAuth2UserService();
+        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();//현재 로그인 진행 중인 서비스를 구분하는 코드, 네이버 로그인인지, 구글로그인인지 구분할때 필요
@@ -45,10 +44,7 @@ public class CustomOauth2UserServie implements OAuth2UserService<OAuth2UserReque
                         SimpleGrantedAuthority(user.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
-
     }
-
-
 
 
     private User saveOrUpdate(OAuthAttributes attributes) {
@@ -56,7 +52,6 @@ public class CustomOauth2UserServie implements OAuth2UserService<OAuth2UserReque
                 .map(entity -> entity.update(attributes.
                         getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
-
         return userRepository.save(user);
     }
 }
